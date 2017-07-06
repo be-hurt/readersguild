@@ -37,10 +37,10 @@
 
 <form action="add_topic.php" method="post">
     <p>
-        <label>Topic Name:<br><input type="text" name="name" rows="5" cols="30"></label>
+        <label>Topic Name:<br><input type="text" name="name" class="form-control"></label>
     </p>
     <p>
-        <label>Topic Description:<br><textarea name="description" rows="5" cols="30"></textarea></label>
+        <label>Topic Description:<br><textarea name="description" class="form-control" rows="5" cols="70"></textarea></label>
     </p>
     <p><input type="submit" name="submit" value="Add New Topic"></p>
 </form>

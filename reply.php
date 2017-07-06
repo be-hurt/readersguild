@@ -24,7 +24,8 @@
 
             if (mysqli_affected_rows($dbc) == 1) {
                 //print a success message
-                print '<p>Your post was successful. Click <a href="view">here</a> to go back to the main topics.</a></p>';
+                print '<p>Your post was successful.</p>
+                <br><button onclick=\"history.go(-3);\">Back to Thread</button>';
             } else {
                 //failure
                 print '<p class="error">Error.<br>Unable to submit your post because:<br>' . mysqli_error($dbc) . '.</p><p>The query being run was: ' . $query . '</p>';
@@ -48,6 +49,8 @@
             while ($row = mysqli_fetch_array($result)) {
                 print "<div><p>{$row['user']}</p><p>{$row['date_posted']}</p><p>{$row['thread_post']}</p></div>";
             }
+
+            print '<hr>';
         } else {
             //couldn't get the information
             print '<p class="error">Could not retrieve the thread because:<br>' . mysqli_error($dbc) . '.</p><p>The query being run was: ' .$query . '</p>';
@@ -55,7 +58,7 @@
 
         print '<form class="reply" action="reply.php" method="post">
         <p>
-            <label>Post:<br><textarea name="post" rows="5" cols="60"></textarea></label>
+            <label>Post:<br><textarea name="post" class="form-control" rows="5" cols="70"></textarea></label>
         </p>
         <input type="hidden" name="thread" id="hiddenField" value="'. $_GET['id'] . '" />
         <p><input type="submit" name="submit" value="Submit"></p>

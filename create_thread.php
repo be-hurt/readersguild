@@ -39,10 +39,10 @@
     } else {
         print '<form action="create_thread.php" method="post">
     <p>
-        <label>Thread Title:<br><input type="text" name="title" rows="5" cols="30"></label>
+        <label>Thread Title:<br><input type="text" name="title" class="form-control"></label>
     </p>
     <p>
-        <label>Post:<br><textarea name="post" rows="5" cols="30"></textarea></label>
+        <label>Post:<br><textarea name="post" class="form-control" rows="5" cols="70"></textarea></label>
     </p>
     <input type="hidden" name="topic" id="hiddenField" value="'. $_GET['id'] . '" />
     <p><input type="submit" name="submit" value="Create Thread"></p>

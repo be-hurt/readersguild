@@ -1,0 +1,73 @@
+<?php
+    if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+    include('includes/functions.php');
+?>
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>
+            <?php
+                if (defined('TITLE')) {
+                    print TITLE;
+                } else {
+                    print "The Reader\'s Guild";
+                }
+            ?>
+        </title>
+        <link href="styles/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="styles/styles.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+             <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav nav-pills">
+                        <li role="presentation" class="active">
+                            <a href="index.php">Home</a>
+                        </li>
+                         <li role="presentation">
+                             <a href="#">Rules</a>
+                        </li>
+                        <?php
+                            if (is_logged_in() && (basename($_SERVER['PHP_SELF']) != 'logout.php')) {
+                                print '<li role="presentation">
+                                    <a href="logout.php">Logout</a>
+                                </li>';
+                            } else {
+                                print '<li role="presentation">
+                                    <a href="login.php">Login</a>
+                                </li>';
+                            }
+
+                            if (is_administrator() && (basename($_SERVER['PHP_SELF']) != 'logout.php') OR (isset($loggedin) && $loggedin) ) {
+                                    print '
+                                <ul class="nav nav-pills navbar-right">
+                                    <li role="presentation"><a href="add_topic.php">Add a Topic</a></li>
+                                    <li role="presentation"><a href="user_admin.php">Manage Users</a></li>
+                                </ul>
+                                <p class="navbar-text navbar-right">Admin Panel:</p>';
+                            }
+                        ?>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="content">
+        <!-- BEGIN CHANGEABLE CONTENT -->

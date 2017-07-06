@@ -29,7 +29,7 @@
 
                 if ($row['user'] == $username) {
                     print '<a class="btn btn-default" href="edit_thread.php?id='
-                    . $row['thread_id'] . '" role="button">Edit</a><a class="btn btn-default" href="delete_post.php" role="button">Delete</a>';
+                    . $row['thread_id'] . '" role="button">Edit</a><a class="btn btn-default" href="delete_thread.php?id=' . $row['thread_id'] . '" role="button">Delete</a>';
                 }
 
                 print '<hr>';
@@ -49,14 +49,16 @@
 
                 if ($row['post_user'] == $username) {
 
-                    print '<a class="btn btn-default" href="edit_post.php?id=' . $row['post_id'] .'" role="button">Edit</a><a class="btn btn-default" href="delete_post.php" role="button">Delete</a>';
+                    print '<a class="btn btn-default" href="edit_post.php?id=' . $row['post_id'] .'" role="button">Edit</a><a class="btn btn-default" href="delete_post.php?id=' . $row['post_id'] . '&title=' . ($_GET['title']) . '&thread_id=' . ($_GET['id']) . '" role="button">Delete</a>';
                 }
                 print '<hr>';
             }
             print '<p><a href="reply.php?id=' . $id . '&title=' . $title . '">Post a reply</a></p>';
         }  else {
             //No replies yet
-            print '<p>Looks like no one has replied here yet.</p>';
+            print '<p>Looks like no one has replied here yet.</p><br>
+            <p><a href="reply.php?id=' . $id . '&title=' . $title . '">Post a reply</a></p>';
+
         }
 
     } else {

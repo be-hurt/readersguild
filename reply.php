@@ -18,6 +18,7 @@
             $user = mysqli_real_escape_string($dbc, trim(strip_tags($_SESSION['username'])));
             $post = mysqli_real_escape_string($dbc, trim(strip_tags($_POST['post'])));
             $thread = mysqli_real_escape_string($dbc, trim(strip_tags($_POST['thread'])));
+            $title = mysqli_real_escape_string($dbc, trim(strip_tags($_POST['thread_title'])));
 
             $query = "INSERT INTO posts(post_user, post_txt, thread_id) VALUES('$user', '$post', $thread)";
             mysqli_query($dbc, $query);
@@ -25,7 +26,8 @@
             if (mysqli_affected_rows($dbc) == 1) {
                 //print a success message
                 print '<p>Your post was successful.</p>
-                <br><button onclick=\"history.go(-3);\">Back to Thread</button>';
+                <br><a class="btn btn-default" href="view_thread.php?id='
+                    . $thread . '&title=' . $title . '" role="button">Back to Thread</a>';
             } else {
                 //failure
                 print '<p class="error">Error.<br>Unable to submit your post because:<br>' . mysqli_error($dbc) . '.</p><p>The query being run was: ' . $query . '</p>';
@@ -61,6 +63,7 @@
             <label>Post:<br><textarea name="post" class="form-control" rows="5" cols="70"></textarea></label>
         </p>
         <input type="hidden" name="thread" id="hiddenField" value="'. $_GET['id'] . '" />
+        <input type="hidden" name="thread_title" id="hiddenField" value="'. $_GET['title'] . '" />
         <p><input type="submit" name="submit" value="Submit"></p>
         </form>';
     }

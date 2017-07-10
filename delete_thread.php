@@ -48,6 +48,8 @@
         $posts_result = mysqli_query($dbc, $post_query);
         if (mysqli_affected_rows($dbc)) {
             print '<p>All posts within the thread were deleted.</p>';
+        } else if (mysqli_affected_rows($dbc) == 0) {
+            print '<p>There were no posts associated with the deleted thread.</p>';
         } else {
             print '<p class="error">Could not delete the thread\'s posts because:<br>' . mysqli_error($dbc) . '</p><p>The query being run was: ' . $post_query . '</p>';
         }
@@ -56,6 +58,7 @@
 
         if (mysqli_affected_rows($dbc) == 1) {
             print '<p>Your thread has been deleted.</p>';
+
         } else {
             print '<p class="error">Could not delete the thread because:<br>' . mysqli_error($dbc) . '</p><p>The query being run was: ' . $query . '</p>';
         }

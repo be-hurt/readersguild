@@ -33,12 +33,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Brand</a>
+                    <a class="navbar-brand" href="index.php"><img alt="logo" class="logo" src="resources/trg_icon.png"></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav nav-pills">
+                    <ul class="nav navbar-nav" id="myNavbar">
                         <li role="presentation" class="active">
                             <a href="index.php">Home</a>
                         </li>
@@ -54,18 +54,18 @@
                                 print '<li role="presentation">
                                     <a href="login.php">Login</a>
                                 </li>';
-                            }
-
-                            if (is_administrator() && (basename($_SERVER['PHP_SELF']) != 'logout.php') OR (isset($loggedin) && $loggedin) ) {
+                            }?>
+                    </ul>
+                            <?php
+                                if (is_administrator() && (basename($_SERVER['PHP_SELF']) != 'logout.php') OR (isset($loggedin) && $loggedin) ) {
                                     print '
-                                <ul class="nav nav-pills navbar-right">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <span class="navbar-text">Admin Panel:</span>
                                     <li role="presentation"><a href="add_topic.php">Add a Topic</a></li>
                                     <li role="presentation"><a href="user_admin.php">Manage Users</a></li>
-                                </ul>
-                                <p class="navbar-text navbar-right">Admin Panel:</p>';
+                                </ul>';
                             }
                         ?>
-                    </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>

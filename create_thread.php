@@ -25,7 +25,8 @@
 
             if (mysqli_affected_rows($dbc) == 1) {
                 //print a success message
-                print '<p>Your thread was successfully created!</p>';
+                print '<p>Your thread was successfully created!</p>
+                <br><a class="btn btn-default" href="view_topic.php?id='. $_POST['topic'] . '&name=' . $_POST['topic_name'] . '" role="button">Back to Topic</a>';
             } else {
                 //failure
                 print '<p class="error">Error.<br>Could not create the thread because:<br>' . mysqli_error($dbc) . '.</p><p>The query being run was: ' . $query . '</p>';
@@ -42,10 +43,11 @@
         <label>Thread Title:<br><input type="text" name="title" class="form-control"></label>
     </p>
     <p>
-        <label>Post:<br><textarea name="post" class="form-control" rows="5" cols="70"></textarea></label>
+        <label>Post:<br><textarea name="post" class="form-control" rows="10" cols="100"></textarea></label>
     </p>
     <input type="hidden" name="topic" id="hiddenField" value="'. $_GET['id'] . '" />
-    <p><input type="submit" name="submit" value="Create Thread"></p>
+    <input type="hidden" name="topic_name" id="hiddenField" value="'. $_GET['name'] . '" />
+    <p><input type="submit" class="btn btn-default" name="submit" value="Create Thread" role="button"></p>
     </form>';
     }
 

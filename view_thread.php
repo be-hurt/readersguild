@@ -19,7 +19,7 @@
         if($result = mysqli_query($dbc, $query)) {
             //retrieve the thread information
             while ($row = mysqli_fetch_array($result)) {
-                print "<div><p>{$row['user']}</p><p>{$row['date_posted']}</p><p>{$row['thread_post']}</p></div>";
+                print "<div class=\"view_thread\"><p>{$row['user']}</p><p>{$row['date_posted']}</p><p>{$row['thread_post']}</p>";
 
                 if (isset($_SESSION['username'])) {
                     $username = $_SESSION['username'];
@@ -32,7 +32,7 @@
                     . $row['thread_id'] . '" role="button">Edit</a><a class="btn btn-default" href="delete_thread.php?id=' . $row['thread_id'] . '" role="button">Delete</a>';
                 }
 
-                print '<hr>';
+                print '</div><hr>';
             }
 
         } else {
@@ -45,19 +45,19 @@
         if($result && $result->num_rows != 0) {
             //retrieve the posts/replies information
             while ($row = mysqli_fetch_array($result)) {
-                print "<div><p>{$row['post_user']}</p><p>{$row['date_posted']}</p><p>{$row['post_txt']}</p></div>";
+                print "<div class=\"view_thread\"><p>{$row['post_user']}</p><p>{$row['date_posted']}</p><p>{$row['post_txt']}</p>";
 
                 if ($row['post_user'] == $username) {
 
                     print '<a class="btn btn-default" href="edit_post.php?id=' . $row['post_id'] .'" role="button">Edit</a><a class="btn btn-default" href="delete_post.php?id=' . $row['post_id'] . '&title=' . ($_GET['title']) . '&thread_id=' . ($_GET['id']) . '" role="button">Delete</a>';
                 }
-                print '<hr>';
+                print '</div><hr>';
             }
-            print '<p><a href="reply.php?id=' . $id . '&title=' . $title . '">Post a reply</a></p>';
+            print '<p><a class="btn btn-default" href="reply.php?id=' . $id . '&title=' . $title . '" role="button">Post a reply</a></p>';
         }  else {
             //No replies yet
             print '<p>Looks like no one has replied here yet.</p><br>
-            <p><a href="reply.php?id=' . $id . '&title=' . $title . '">Post a reply</a></p>';
+            <p><a class="btn btn-default" href="reply.php?id=' . $id . '&title=' . $title . '" role="button">Post a reply</a></p>';
 
         }
 

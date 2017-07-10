@@ -60,11 +60,11 @@
 
         print '<form class="reply" action="reply.php" method="post">
         <p>
-            <label>Post:<br><textarea name="post" class="form-control" rows="5" cols="70"></textarea></label>
+            <label>Post:<br><textarea name="post" class="form-control" rows="10" cols="100"></textarea></label>
         </p>
         <input type="hidden" name="thread" id="hiddenField" value="'. $_GET['id'] . '" />
         <input type="hidden" name="thread_title" id="hiddenField" value="'. $_GET['title'] . '" />
-        <p><input type="submit" name="submit" value="Submit"></p>
+        <p><input type="submit" class="btn btn-default" name="submit" value="Submit" role="button"></p>
         </form>';
     }
 

@@ -43,32 +43,34 @@
     }
 
     if ($loggedin) {
-        print '<p>You are now logged in!</p>';
-        print '<p>Welcome back, ' . $_SESSION['username'] . '. Click <a href="index.php">here</a> to go back to the home page.</p>';
+        print '<div class="welcome">
+        <h3>You are now logged in.</h3><br>';
+        print '<p>Welcome back ' . $_SESSION['username'] . '! Click <a href="index.php">here</a> to go back to the home page.</p>
+        </div>';
     } else {
         print '<h2>Login Form</h2>
-        <div class="register">
-            <p>Not yet a member? <a class="btn btn-default" href="register.php" role="button">Sign Up!</a></p>
-        </div>
-        <form class="form-horizontal" action="login.php" method="post">
+        <form class="login" action="login.php" method="post">
             <div class="form-group">
-                <label for="username" class="col-sm-2 control-label">Username:</label>
-                <div class="col-xs-3">
+                <label for="username" class="control-label">Username:</label>
+                <div>
                     <input type="text" class="form-control" name="username" placeholder="Username">
                 </div>
             </div>
             <div class="form-group">
-                <label for="password" class="col-sm-2 control-label">Password:</label>
-                <div class="col-xs-3">
+                <label for="password" class="control-label">Password:</label>
+                <div>
                     <input type="password" class="form-control" name="password" placeholder="Password">
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
+                <div>
                     <input type="submit" class="btn btn-default" name="submit" value="Log In!">
                 </div>
             </div>
-        </form>';
+        </form>
+        <div class="register">
+            <p>Not yet a member? <a class="btn btn-default" href="register.php" role="button">Sign Up!</a></p>
+        </div>';
     }
 
     include('templates/footer.html');

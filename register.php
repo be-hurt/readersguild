@@ -41,7 +41,7 @@
                 }
             } else {
                 //failed to enter a matching pw and confirmation pw
-                print '<p class="error">Your Password and Password Confirmation did not match. Please go back and try again.</p>';
+                print '<p class="error">Your Password and Password Confirmation did not match. Please try again.</p>';
             }
         } else {
             //Failed to enter a username or password
@@ -50,27 +50,27 @@
     }
 ?>
 <h2>Register</h2>
-<form class="form-horizontal" action="register.php" method="post">
+<form action="register.php" method="post">
     <div class="form-group">
-        <label for="username" class="col-sm-2 control-label">Username:</label>
-        <div class="col-xs-3">
+        <label for="username" class="control-label">Username:</label>
+        <div>
             <input type="text" class="form-control" name="username" placeholder="Username">
         </div>
     </div>
     <div class="form-group">
-        <label for="password1" class="col-sm-2 control-label">Password:</label>
-        <div class="col-xs-3">
+        <label for="password1" class="control-label">Password:</label>
+        <div>
             <input type="password" class="form-control" name="password1" placeholder="Password">
         </div>
     </div>
     <div class="form-group">
-        <label for="password2" class="col-sm-2 control-label">Confirm Password:</label>
-        <div class="col-xs-3">
+        <label for="password2" class="control-label">Confirm Password:</label>
+        <div>
             <input type="password" class="form-control" name="password2" placeholder="Confirm Password">
         </div>
     </div>
     <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
+        <div>
             <input  class="btn btn-default" type="submit" name="submit" value="Sign Up">
         </div>
     </div>

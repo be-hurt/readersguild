@@ -40,9 +40,9 @@
         <label>Topic Name:<br><input type="text" name="name" class="form-control"></label>
     </p>
     <p>
-        <label>Topic Description:<br><textarea name="description" class="form-control" rows="5" cols="70"></textarea></label>
+        <label>Topic Description:<br><textarea name="description" class="form-control" rows="10" cols="100"></textarea></label>
     </p>
-    <p><input type="submit" name="submit" value="Add New Topic"></p>
+    <p><input type="submit" class="btn btn-default" name="submit" value="Add New Topic" role="button"></p>
 </form>
 <?php
     include('templates/footer.html');
